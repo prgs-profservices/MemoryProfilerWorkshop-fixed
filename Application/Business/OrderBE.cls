@@ -92,14 +92,14 @@ class Business.OrderBE inherits BusinessEntity:
         end finally.
     end method.    
     
-    // override to use exiting static dataset if GET with expand orderlines
-    method public override handle GetRequestDataSet(pClientRequest as IClientRequest):
+    // override to use existing static dataset if GET with expand orderlines
+    method public override handle DoGetRequestDataSet(pClientRequest as IClientRequest):
         if type-of(pClientRequest,IClientGetRequest) then do:
             // if expand only orderline then use the dsorder dataset 
             if cast(pClientRequest,IClientGetRequest):Expand = "orderlines" then 
                 return dataset dsOrder:handle.
         end.        
-        return super:GetRequestDataset(pClientRequest).    
+        return super:DoGetRequestDataset(pClientRequest).    
     end method.     
     
 
